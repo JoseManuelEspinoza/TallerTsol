@@ -100,14 +100,68 @@ await testRunner.AndAsync("accede al submódulo \'Nueva Venta\'", ((string)(null
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Registro de una nueva venta con pago al contado")]
+        [NUnit.Framework.DescriptionAttribute("Registro de una nueva venta con pago al contado <condicion>")]
         [NUnit.Framework.CategoryAttribute("RegistrarVenta")]
-        public async System.Threading.Tasks.Task RegistroDeUnaNuevaVentaConPagoAlContado()
+        [NUnit.Framework.TestCaseAttribute("1", "400000437", "1", "60587924", "FACTURA ELECTRONICA", "INMEDIATA", "CO", "EF", "130.00", null)]
+        [NUnit.Framework.TestCaseAttribute("2", "400000437", "1", "60587924", "FACTURA ELECTRONICA", "DIFERIDA", "CO", "EF", "130.00", null)]
+        [NUnit.Framework.TestCaseAttribute("3", "400000437", "1", "60587924", "BOLETA DE VENTA ELECTRONICA", "INMEDIATA", "CO", "EF", "130.00", null)]
+        [NUnit.Framework.TestCaseAttribute("4", "400000437", "1", "60587924", "BOLETA DE VENTA ELECTRONICA", "DIFERIDA", "CO", "EF", "130.00", null)]
+        [NUnit.Framework.TestCaseAttribute("5", "400000437", "1", "20608671880", "FACTURA ELECTRONICA", "INMEDIATA", "CO", "EF", "130.00", null)]
+        [NUnit.Framework.TestCaseAttribute("6", "400000437", "1", "20608671880", "FACTURA ELECTRONICA", "DIFERIDA", "CO", "EF", "130.00", null)]
+        [NUnit.Framework.TestCaseAttribute("7", "400000437", "1", "20608671880", "BOLETA DE VENTA ELECTRONICA", "INMEDIATA", "CO", "EF", "130.00", null)]
+        [NUnit.Framework.TestCaseAttribute("8", "400000437", "1", "20608671880", "BOLETA DE VENTA ELECTRONICA", "DIFERIDA", "CO", "EF", "130.00", null)]
+        [NUnit.Framework.TestCaseAttribute("9", "400000437", "9999", "60587924", "FACTURA ELECTRONICA", "INMEDIATA", "CO", "EF", "130.00", null)]
+        [NUnit.Framework.TestCaseAttribute("10", "400000437", "9999", "60587924", "FACTURA ELECTRONICA", "DIFERIDA", "CO", "EF", "130.00", null)]
+        [NUnit.Framework.TestCaseAttribute("11", "400000437", "9999", "60587924", "BOLETA DE VENTA ELECTRONICA", "INMEDIATA", "CO", "EF", "130.00", null)]
+        [NUnit.Framework.TestCaseAttribute("12", "400000437", "9999", "60587924", "BOLETA DE VENTA ELECTRONICA", "DIFERIDA", "CO", "EF", "130.00", null)]
+        [NUnit.Framework.TestCaseAttribute("13", "400000437", "9999", "20608671880", "BOLETA DE VENTA ELECTRONICA", "INMEDIATA", "CO", "EF", "130.00", null)]
+        [NUnit.Framework.TestCaseAttribute("14", "400000437", "9999", "20608671880", "FACTURA ELECTRONICA", "DIFERIDA", "CO", "EF", "130.00", null)]
+        [NUnit.Framework.TestCaseAttribute("15", "400000437", "9999", "20608671880", "FACTURA ELECTRONICA", "INMEDIATA", "CO", "EF", "130.00", null)]
+        [NUnit.Framework.TestCaseAttribute("16", "400000437", "9999", "20608671880", "BOLETA DE VENTA ELECTRONICA", "DIFERIDA", "CO", "EF", "130.00", null)]
+        [NUnit.Framework.TestCaseAttribute("17", "", "1", "60587924", "NOTA DE VENTA (INTERNA)", "INMEDIATA", "CO", "EF", "130.00", null)]
+        [NUnit.Framework.TestCaseAttribute("18", "", "1", "60587924", "NOTA DE VENTA (INTERNA)", "DIFERIDA", "CO", "EF", "130.00", null)]
+        [NUnit.Framework.TestCaseAttribute("19", "", "1", "60587924", "NOTA DE VENTA (INTERNA)", "INMEDIATA", "CO", "EF", "130.00", null)]
+        [NUnit.Framework.TestCaseAttribute("20", "", "1", "60587924", "NOTA DE VENTA (INTERNA)", "DIFERIDA", "CO", "EF", "130.00", null)]
+        [NUnit.Framework.TestCaseAttribute("21", "", "1", "20608671880", "NOTA DE VENTA (INTERNA)", "INMEDIATA", "CO", "EF", "130.00", null)]
+        [NUnit.Framework.TestCaseAttribute("22", "", "1", "20608671880", "NOTA DE VENTA (INTERNA)", "DIFERIDA", "CO", "EF", "130.00", null)]
+        [NUnit.Framework.TestCaseAttribute("23", "", "1", "20608671880", "NOTA DE VENTA (INTERNA)", "INMEDIATA", "CO", "EF", "130.00", null)]
+        [NUnit.Framework.TestCaseAttribute("24", "", "1", "20608671880", "NOTA DE VENTA (INTERNA)", "DIFERIDA", "CO", "EF", "130.00", null)]
+        [NUnit.Framework.TestCaseAttribute("25", "", "9999", "60587924", "NOTA DE VENTA (INTERNA)", "INMEDIATA", "CO", "EF", "130.00", null)]
+        [NUnit.Framework.TestCaseAttribute("26", "", "9999", "60587924", "NOTA DE VENTA (INTERNA)", "DIFERIDA", "CO", "EF", "130.00", null)]
+        [NUnit.Framework.TestCaseAttribute("27", "", "9999", "20608671880", "NOTA DE VENTA (INTERNA)", "INMEDIATA", "CO", "EF", "130.00", null)]
+        [NUnit.Framework.TestCaseAttribute("28", "", "9999", "20608671880", "NOTA DE VENTA (INTERNA)", "DIFERIDA", "CO", "EF", "130.00", null)]
+        [NUnit.Framework.TestCaseAttribute("29", "", "9999", "20608671880", "NOTA DE VENTA (INTERNA)", "INMEDIATA", "CO", "EF", "130.00", null)]
+        [NUnit.Framework.TestCaseAttribute("30", "", "9999", "20608671880", "NOTA DE VENTA (INTERNA)", "DIFERIDA", "CO", "EF", "130.00", null)]
+        [NUnit.Framework.TestCaseAttribute("31", "", "9999", "60587924", "NOTA DE VENTA (INTERNA)", "INMEDIATA", "CO", "EF", "130.00", null)]
+        [NUnit.Framework.TestCaseAttribute("32", "", "9999", "60587924", "NOTA DE VENTA (INTERNA)", "DIFERIDA", "CO", "EF", "130.00", null)]
+        [NUnit.Framework.TestCaseAttribute("33", "400000437", "-4", "20608671880", "FACTURA ELECTRONICA", "DIFERIDA", "CO", "EF", "130.00", null)]
+        [NUnit.Framework.TestCaseAttribute("34", "400000437", "0", "20608671880", "FACTURA ELECTRONICA", "DIFERIDA", "CO", "EF", "130.00", null)]
+        [NUnit.Framework.TestCaseAttribute("35", "400000437", "20", "20608671880", "FACTURA ELECTRONICA", "DIFERIDA", "CO", "EF", "130.00", null)]
+        [NUnit.Framework.TestCaseAttribute("36", "400000437", "9999", "20608671880", "FACTURA ELECTRONICA", "DIFERIDA", "CO", "EF", "130.00", null)]
+        [NUnit.Framework.TestCaseAttribute("37", "400000437", "1", "20608671880", "FACTURA ELECTRONICA", "DIFERIDA", "CO", "EF", "-5", null)]
+        [NUnit.Framework.TestCaseAttribute("38", "400000437", "1", "20608671880", "FACTURA ELECTRONICA", "DIFERIDA", "CO", "EF", "0", null)]
+        [NUnit.Framework.TestCaseAttribute("39", "400000437", "1", "20608671880", "FACTURA ELECTRONICA", "DIFERIDA", "CO", "EF", "1", null)]
+        [NUnit.Framework.TestCaseAttribute("40", "400000437", "1", "20608671880", "FACTURA ELECTRONICA", "DIFERIDA", "CO", "EF", "10", null)]
+        public async System.Threading.Tasks.Task RegistroDeUnaNuevaVentaConPagoAlContadoCondicion(string condicion, string concepto, string cantidad, string documento, string tipo_Comprobante, string tipo_Entrega, string tipo_Pago, string medio_Pago, string informacion_Pago, string[] exampleTags)
         {
-            string[] tagsOfScenario = new string[] {
+            string[] @__tags = new string[] {
                     "RegistrarVenta"};
+            if ((exampleTags != null))
+            {
+                @__tags = System.Linq.Enumerable.ToArray(System.Linq.Enumerable.Concat(@__tags, exampleTags));
+            }
+            string[] tagsOfScenario = @__tags;
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("Registro de una nueva venta con pago al contado", null, tagsOfScenario, argumentsOfScenario, featureTags);
+            argumentsOfScenario.Add("condicion", condicion);
+            argumentsOfScenario.Add("concepto", concepto);
+            argumentsOfScenario.Add("cantidad", cantidad);
+            argumentsOfScenario.Add("documento", documento);
+            argumentsOfScenario.Add("tipo_comprobante", tipo_Comprobante);
+            argumentsOfScenario.Add("tipo_entrega", tipo_Entrega);
+            argumentsOfScenario.Add("tipo_pago", tipo_Pago);
+            argumentsOfScenario.Add("medio_pago", medio_Pago);
+            argumentsOfScenario.Add("informacion_pago", informacion_Pago);
+            global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("Registro de una nueva venta con pago al contado <condicion>", null, tagsOfScenario, argumentsOfScenario, featureTags);
 #line 11
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
@@ -122,57 +176,33 @@ this.ScenarioInitialize(scenarioInfo);
 await this.FeatureBackgroundAsync();
 #line hidden
 #line 12
- await testRunner.WhenAsync("el usuario agrega el concepto \'400000437\'", ((string)(null)), ((global::Reqnroll.Table)(null)), "When ");
+ await testRunner.WhenAsync(string.Format("el usuario agrega el concepto \'{0}\'", concepto), ((string)(null)), ((global::Reqnroll.Table)(null)), "When ");
 #line hidden
 #line 13
- await testRunner.AndAsync("ingresa la cantidad \'2\'", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
+ await testRunner.AndAsync(string.Format("ingresa la cantidad \'{0}\'", cantidad), ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
 #line hidden
 #line 14
     await testRunner.AndAsync("selecciona igv", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
 #line hidden
 #line 15
-    await testRunner.AndAsync("selecciona al cliente con documento \'60587924\'", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
+    await testRunner.AndAsync(string.Format("selecciona al cliente con documento \'{0}\'", documento), ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
 #line hidden
 #line 16
-    await testRunner.AndAsync("selecciona el tipo de comprobante \'BOLETA\'", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
+    await testRunner.AndAsync(string.Format("selecciona el tipo de comprobante \'{0}\'", tipo_Comprobante), ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
 #line hidden
 #line 17
-    await testRunner.AndAsync("selecciona el tipo de entrega", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
+ await testRunner.AndAsync(string.Format("selecciona el tipo de entrega \'{0}\'", tipo_Entrega), ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
 #line hidden
 #line 18
-    await testRunner.AndAsync("selecciona el tipo de fecha \'30/12/2025\'", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
+    await testRunner.AndAsync(string.Format("selecciona el tipo de pago \'{0}\'", tipo_Pago), ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
 #line hidden
 #line 19
-    await testRunner.AndAsync("introduce el peso bruto \'50\'", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
+    await testRunner.AndAsync(string.Format("selecciona el medio de pago \'{0}\'", medio_Pago), ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
 #line hidden
 #line 20
-    await testRunner.AndAsync("introduce el numero de bultos \'5\'", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
+    await testRunner.AndAsync(string.Format("ingrese la informacion del pago \'{0}\'", informacion_Pago), ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
 #line hidden
 #line 21
-    await testRunner.AndAsync("selecciona la modalidad de transporte \'TRANSPORTE PÚBLICO\'", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
-#line hidden
-#line 22
-    await testRunner.AndAsync("introduce el numero de identifacion \'20608671880\'", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
-#line hidden
-#line 23
-    await testRunner.AndAsync("introduce el detalle de origen \"CASA BLANCA\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
-#line hidden
-#line 24
-    await testRunner.AndAsync("selecciona el detalle de destino \"CASA NEGRA CON ROJA\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
-#line hidden
-#line 25
-    await testRunner.AndAsync("guardar guia", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
-#line hidden
-#line 26
-    await testRunner.AndAsync("selecciona el tipo de pago \'Crédito\'", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
-#line hidden
-#line 27
-    await testRunner.AndAsync("selecciona el medio de pago \'TDEB\'", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
-#line hidden
-#line 28
-    await testRunner.AndAsync("ingrese la informacion del pago \'cancelado\'", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
-#line hidden
-#line 29
     await testRunner.ThenAsync("la venta se guarda correctamente", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
 #line hidden
             }

@@ -86,38 +86,30 @@ namespace AutomatizacionPOM.Features
 #line 3
 #line hidden
 #line 4
-await testRunner.GivenAsync("el usuario ingresa al ambiente \'http://localhost:31096/\'", ((string)(null)), ((global::Reqnroll.Table)(null)), "Given ");
+  await testRunner.GivenAsync("el usuario ingresa al ambiente \'http://localhost:31096/\'", ((string)(null)), ((global::Reqnroll.Table)(null)), "Given ");
 #line hidden
 #line 5
-await testRunner.WhenAsync("el usuario inicia sesión con usuario \'admin@plazafer.com\' y contraseña \'calidad\'", ((string)(null)), ((global::Reqnroll.Table)(null)), "When ");
+  await testRunner.WhenAsync("el usuario inicia sesión con usuario \'admin@plazafer.com\' y contraseña \'calidad\'", ((string)(null)), ((global::Reqnroll.Table)(null)), "When ");
 #line hidden
 #line 6
-await testRunner.AndAsync("accede al módulo \'Venta\'", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
+  await testRunner.AndAsync("accede al módulo \'Venta\'", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
 #line hidden
 #line 7
-await testRunner.AndAsync("accede al submódulo \'Nueva Venta\'", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
+  await testRunner.AndAsync("accede al submódulo \'Nueva Venta\'", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
 #line hidden
 #line 8
-await testRunner.AndAsync("el usuario agrega el concepto \'400000437\'", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
+  await testRunner.AndAsync("el usuario agrega el concepto \'400000437\'", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
 #line hidden
 #line 9
-await testRunner.AndAsync("ingresa la cantidad \'2\'", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
-#line hidden
-#line 10
-await testRunner.AndAsync("selecciona igv", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
-#line hidden
-#line 11
-await testRunner.AndAsync("selecciona al cliente con documento \'60587924\'", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
-#line hidden
-#line 12
-await testRunner.AndAsync("selecciona el tipo de comprobante \'BOLETA\'", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
+  await testRunner.AndAsync("selecciona al cliente con documento \'60587924\'", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
 #line hidden
         }
         
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("Pago en Efectivo - Condicion <condicion>")]
         [NUnit.Framework.CategoryAttribute("PagoEfectivo")]
-        [NUnit.Framework.TestCaseAttribute("1", "CO", "100", null)]
+        [NUnit.Framework.TestCaseAttribute("1", "CO", "130.00", null)]
+        [NUnit.Framework.TestCaseAttribute("2", "CO", "-1.00", null)]
         public async System.Threading.Tasks.Task PagoEnEfectivo_CondicionCondicion(string condicion, string tipo_Pago, string recibido, string[] exampleTags)
         {
             string[] @__tags = new string[] {
@@ -132,7 +124,7 @@ await testRunner.AndAsync("selecciona el tipo de comprobante \'BOLETA\'", ((stri
             argumentsOfScenario.Add("tipo_pago", tipo_Pago);
             argumentsOfScenario.Add("recibido", recibido);
             global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("Pago en Efectivo - Condicion <condicion>", null, tagsOfScenario, argumentsOfScenario, featureTags);
-#line 16
+#line 15
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             if ((global::Reqnroll.TagHelper.ContainsIgnoreTag(scenarioInfo.CombinedTags) || global::Reqnroll.TagHelper.ContainsIgnoreTag(featureTags)))
@@ -145,17 +137,17 @@ this.ScenarioInitialize(scenarioInfo);
 #line 3
 await this.FeatureBackgroundAsync();
 #line hidden
+#line 16
+  await testRunner.WhenAsync(string.Format("el usuario selecciona el tipo de pago \'{0}\'", tipo_Pago), ((string)(null)), ((global::Reqnroll.Table)(null)), "When ");
+#line hidden
 #line 17
- await testRunner.WhenAsync(string.Format("el usuario selecciona el tipo de pago \'{0}\'", tipo_Pago), ((string)(null)), ((global::Reqnroll.Table)(null)), "When ");
+  await testRunner.AndAsync("el usuario selecciona el medio de pago \'EF\'", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
 #line hidden
 #line 18
- await testRunner.AndAsync("el usuario selecciona el medio de pago \'EF\'", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
+  await testRunner.AndAsync(string.Format("el usuario ingresa el monto recibido \'{0}\'", recibido), ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
 #line hidden
 #line 19
- await testRunner.AndAsync(string.Format("el usuario ingresa el monto recibido \'{0}\'", recibido), ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
-#line hidden
-#line 20
- await testRunner.ThenAsync("la venta se guarda correctamente", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
+  await testRunner.ThenAsync("el usuario guarda la venta correctamente", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
 #line hidden
             }
             await this.ScenarioCleanupAsync();
@@ -164,7 +156,14 @@ await this.FeatureBackgroundAsync();
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("Pago con Tarjeta de Credito - Condicion <condicion>")]
         [NUnit.Framework.CategoryAttribute("TarjetaCredito")]
-        [NUnit.Framework.TestCaseAttribute("3", "\"CO\"", "\"SCOTIABANK\"", "\"VISA\"", "\"1234567890\"", null)]
+        [NUnit.Framework.TestCaseAttribute("3", "CO", "SCOTIABANK", "VISA", "1234567890", null)]
+        [NUnit.Framework.TestCaseAttribute("4", "CO", "INTERBANK", "MASTER CARD", "", null)]
+        [NUnit.Framework.TestCaseAttribute("5", "CO", "BBVA CONTINENTAL", "AMERICAN EXPRESS", "123", null)]
+        [NUnit.Framework.TestCaseAttribute("6", "CO", "BANCO DE CREDITO DEL PERU", "DINERS CLUB", "00112233", null)]
+        [NUnit.Framework.TestCaseAttribute("7", "CO", "BANCO DE LA NACION", "VISA", "9876543210", null)]
+        [NUnit.Framework.TestCaseAttribute("8", "CO", "SCOTIABANK", "MASTER CARD", "000000", null)]
+        [NUnit.Framework.TestCaseAttribute("9", "CO", "INTERBANK", "AMERICAN EXPRESS", "565656", null)]
+        [NUnit.Framework.TestCaseAttribute("10", "CO", "BBVA CONTINENTAL", "DINERS CLUB", "ABC-9090", null)]
         public async System.Threading.Tasks.Task PagoConTarjetaDeCredito_CondicionCondicion(string condicion, string tipo_Pago, string nombre_Banco, string tipo_Tarjeta, string numero_Operacion, string[] exampleTags)
         {
             string[] @__tags = new string[] {
@@ -181,7 +180,7 @@ await this.FeatureBackgroundAsync();
             argumentsOfScenario.Add("tipo_tarjeta", tipo_Tarjeta);
             argumentsOfScenario.Add("numero_operacion", numero_Operacion);
             global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("Pago con Tarjeta de Credito - Condicion <condicion>", null, tagsOfScenario, argumentsOfScenario, featureTags);
-#line 27
+#line 29
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             if ((global::Reqnroll.TagHelper.ContainsIgnoreTag(scenarioInfo.CombinedTags) || global::Reqnroll.TagHelper.ContainsIgnoreTag(featureTags)))
@@ -194,23 +193,23 @@ this.ScenarioInitialize(scenarioInfo);
 #line 3
 await this.FeatureBackgroundAsync();
 #line hidden
-#line 28
-    await testRunner.WhenAsync(string.Format("selecciona el tipo de pago \'{0}\'", tipo_Pago), ((string)(null)), ((global::Reqnroll.Table)(null)), "When ");
-#line hidden
-#line 29
-    await testRunner.AndAsync("selecciona el medio de pago \'TCRE\'", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
-#line hidden
 #line 30
-    await testRunner.AndAsync(string.Format("ingresa nombre del banco \'{0}\'", nombre_Banco), ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
+  await testRunner.WhenAsync(string.Format("el usuario selecciona el tipo de pago \'{0}\'", tipo_Pago), ((string)(null)), ((global::Reqnroll.Table)(null)), "When ");
 #line hidden
 #line 31
-    await testRunner.AndAsync(string.Format("selecciona tipo de tarjeta \'{0}\'", tipo_Tarjeta), ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
+  await testRunner.AndAsync("el usuario selecciona el medio de pago \'TCRE\'", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
 #line hidden
 #line 32
-    await testRunner.AndAsync(string.Format("ingresa número de operación \'{0}\'", numero_Operacion), ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
+  await testRunner.AndAsync(string.Format("el usuario ingresa nombre del banco credito \'{0}\'", nombre_Banco), ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
 #line hidden
 #line 33
-    await testRunner.ThenAsync("la venta se guarda correctamente", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
+  await testRunner.AndAsync(string.Format("el usuario selecciona tipo de tarjeta credito \'{0}\'", tipo_Tarjeta), ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
+#line hidden
+#line 34
+  await testRunner.AndAsync(string.Format("el usuario ingresa numero de operacion credito \'{0}\'", numero_Operacion), ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
+#line hidden
+#line 35
+  await testRunner.ThenAsync("el usuario guarda la venta correctamente", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
 #line hidden
             }
             await this.ScenarioCleanupAsync();
@@ -219,7 +218,14 @@ await this.FeatureBackgroundAsync();
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("Pago con Tarjeta de Débito - Condición <condicion>")]
         [NUnit.Framework.CategoryAttribute("TarjetaDebito")]
-        [NUnit.Framework.TestCaseAttribute("8", "\"CO\"", "\"SCOTIABANK\"", "\"VISA\"", "\"1234567890\"", null)]
+        [NUnit.Framework.TestCaseAttribute("11", "CO", "SCOTIABANK", "VISA", "1122334455", null)]
+        [NUnit.Framework.TestCaseAttribute("12", "CO", "INTERBANK", "MASTER CARD", "", null)]
+        [NUnit.Framework.TestCaseAttribute("13", "CO", "BBVA CONTINENTAL", "AMERICAN EXPRESS", "9", null)]
+        [NUnit.Framework.TestCaseAttribute("14", "CO", "BANCO DE CREDITO DEL PERU", "DINERS CLUB", "445566", null)]
+        [NUnit.Framework.TestCaseAttribute("15", "CO", "BANCO DE LA NACION", "VISA", "123-XYZ", null)]
+        [NUnit.Framework.TestCaseAttribute("16", "CO", "SCOTIABANK", "MASTER CARD", "000001", null)]
+        [NUnit.Framework.TestCaseAttribute("17", "CO", "INTERBANK", "AMERICAN EXPRESS", "5656AB", null)]
+        [NUnit.Framework.TestCaseAttribute("18", "CO", "BBVA CONTINENTAL", "DINERS CLUB", "", null)]
         public async System.Threading.Tasks.Task PagoConTarjetaDeDebito_CondicionCondicion(string condicion, string tipo_Pago, string nombre_Banco, string tipo_Tarjeta, string numero_Operacion, string[] exampleTags)
         {
             string[] @__tags = new string[] {
@@ -236,7 +242,7 @@ await this.FeatureBackgroundAsync();
             argumentsOfScenario.Add("tipo_tarjeta", tipo_Tarjeta);
             argumentsOfScenario.Add("numero_operacion", numero_Operacion);
             global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("Pago con Tarjeta de Débito - Condición <condicion>", null, tagsOfScenario, argumentsOfScenario, featureTags);
-#line 41
+#line 51
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             if ((global::Reqnroll.TagHelper.ContainsIgnoreTag(scenarioInfo.CombinedTags) || global::Reqnroll.TagHelper.ContainsIgnoreTag(featureTags)))
@@ -249,23 +255,23 @@ this.ScenarioInitialize(scenarioInfo);
 #line 3
 await this.FeatureBackgroundAsync();
 #line hidden
-#line 42
-    await testRunner.WhenAsync(string.Format("selecciona el tipo de pago \'{0}\'", tipo_Pago), ((string)(null)), ((global::Reqnroll.Table)(null)), "When ");
+#line 52
+  await testRunner.WhenAsync(string.Format("el usuario selecciona el tipo de pago \'{0}\'", tipo_Pago), ((string)(null)), ((global::Reqnroll.Table)(null)), "When ");
 #line hidden
-#line 43
-    await testRunner.AndAsync("selecciona el medio de pago \'TDEB\'", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
+#line 53
+  await testRunner.AndAsync("el usuario selecciona el medio de pago \'TDEB\'", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
 #line hidden
-#line 44
-    await testRunner.AndAsync(string.Format("ingresa nombre del banco \'{0}\'", nombre_Banco), ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
+#line 54
+  await testRunner.AndAsync(string.Format("el usuario ingresa nombre del banco debito \'{0}\'", nombre_Banco), ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
 #line hidden
-#line 45
-    await testRunner.AndAsync(string.Format("selecciona tipo de tarjeta \'{0}\'", tipo_Tarjeta), ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
+#line 55
+  await testRunner.AndAsync(string.Format("el usuario selecciona tipo de tarjeta debito \'{0}\'", tipo_Tarjeta), ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
 #line hidden
-#line 46
-    await testRunner.AndAsync(string.Format("ingresa número de operación \'{0}\'", numero_Operacion), ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
+#line 56
+  await testRunner.AndAsync(string.Format("el usuario ingresa numero de operacion debito \'{0}\'", numero_Operacion), ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
 #line hidden
-#line 47
-    await testRunner.ThenAsync("la venta se guarda correctamente", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
+#line 57
+  await testRunner.ThenAsync("el usuario guarda la venta correctamente", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
 #line hidden
             }
             await this.ScenarioCleanupAsync();
@@ -274,7 +280,10 @@ await this.FeatureBackgroundAsync();
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("Pago por Transferencia - Condición <condicion>")]
         [NUnit.Framework.CategoryAttribute("Transferencia")]
-        [NUnit.Framework.TestCaseAttribute("19", "Contado", "\"001103180100023457\"", "\"TT00112233\"", null)]
+        [NUnit.Framework.TestCaseAttribute("19", "CO", "001103180100023457", "00112233", null)]
+        [NUnit.Framework.TestCaseAttribute("20", "CO", "001103180100023457", "", null)]
+        [NUnit.Framework.TestCaseAttribute("21", "CO", "5601898737134", "ABC123", null)]
+        [NUnit.Framework.TestCaseAttribute("22", "CO", "5601898737134", "77889955", null)]
         public async System.Threading.Tasks.Task PagoPorTransferencia_CondicionCondicion(string condicion, string tipo_Pago, string cuenta_Correcta, string numero_Operacion, string[] exampleTags)
         {
             string[] @__tags = new string[] {
@@ -290,7 +299,7 @@ await this.FeatureBackgroundAsync();
             argumentsOfScenario.Add("cuenta_correcta", cuenta_Correcta);
             argumentsOfScenario.Add("numero_operacion", numero_Operacion);
             global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("Pago por Transferencia - Condición <condicion>", null, tagsOfScenario, argumentsOfScenario, featureTags);
-#line 55
+#line 73
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             if ((global::Reqnroll.TagHelper.ContainsIgnoreTag(scenarioInfo.CombinedTags) || global::Reqnroll.TagHelper.ContainsIgnoreTag(featureTags)))
@@ -303,20 +312,20 @@ this.ScenarioInitialize(scenarioInfo);
 #line 3
 await this.FeatureBackgroundAsync();
 #line hidden
-#line 56
-    await testRunner.WhenAsync(string.Format("selecciona el tipo de pago \'{0}\'", tipo_Pago), ((string)(null)), ((global::Reqnroll.Table)(null)), "When ");
+#line 74
+  await testRunner.WhenAsync(string.Format("el usuario selecciona el tipo de pago \'{0}\'", tipo_Pago), ((string)(null)), ((global::Reqnroll.Table)(null)), "When ");
 #line hidden
-#line 57
-    await testRunner.AndAsync("selecciona el medio de pago \'TRANFON\'", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
+#line 75
+  await testRunner.AndAsync("el usuario selecciona el medio de pago \'TRANFON\'", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
 #line hidden
-#line 58
-    await testRunner.AndAsync(string.Format("ingresa cuenta bancaria correcta \'{0}\'", cuenta_Correcta), ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
+#line 76
+  await testRunner.AndAsync(string.Format("el usuario ingresa cuenta bancaria correcta \'{0}\'", cuenta_Correcta), ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
 #line hidden
-#line 59
-    await testRunner.AndAsync(string.Format("ingresa número de operación \'{0}\'", numero_Operacion), ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
+#line 77
+  await testRunner.AndAsync(string.Format("el usuario ingresa numero de operacion \'{0}\'", numero_Operacion), ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
 #line hidden
-#line 60
-    await testRunner.ThenAsync("la venta se guarda correctamente", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
+#line 78
+  await testRunner.ThenAsync("el usuario guarda la venta correctamente", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
 #line hidden
             }
             await this.ScenarioCleanupAsync();
@@ -324,12 +333,15 @@ await this.FeatureBackgroundAsync();
         
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("Pago por Deposito - Condición <condicion>")]
-        [NUnit.Framework.CategoryAttribute("Transferencia")]
-        [NUnit.Framework.TestCaseAttribute("20", "Contado", "\"001103180100023457\"", "\"TT00112233\"", null)]
+        [NUnit.Framework.CategoryAttribute("Deposito")]
+        [NUnit.Framework.TestCaseAttribute("23", "CO", "001103180100023457", "556677", null)]
+        [NUnit.Framework.TestCaseAttribute("24", "CO", "5601898737134", "ABC-7788", null)]
+        [NUnit.Framework.TestCaseAttribute("25", "CO", "5601898737134", "90909090", null)]
+        [NUnit.Framework.TestCaseAttribute("26", "CO", "001103180100023457", "", null)]
         public async System.Threading.Tasks.Task PagoPorDeposito_CondicionCondicion(string condicion, string tipo_Pago, string cuenta_Correcta, string numero_Operacion, string[] exampleTags)
         {
             string[] @__tags = new string[] {
-                    "Transferencia"};
+                    "Deposito"};
             if ((exampleTags != null))
             {
                 @__tags = System.Linq.Enumerable.ToArray(System.Linq.Enumerable.Concat(@__tags, exampleTags));
@@ -341,7 +353,7 @@ await this.FeatureBackgroundAsync();
             argumentsOfScenario.Add("cuenta_correcta", cuenta_Correcta);
             argumentsOfScenario.Add("numero_operacion", numero_Operacion);
             global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("Pago por Deposito - Condición <condicion>", null, tagsOfScenario, argumentsOfScenario, featureTags);
-#line 66
+#line 90
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             if ((global::Reqnroll.TagHelper.ContainsIgnoreTag(scenarioInfo.CombinedTags) || global::Reqnroll.TagHelper.ContainsIgnoreTag(featureTags)))
@@ -354,20 +366,20 @@ this.ScenarioInitialize(scenarioInfo);
 #line 3
 await this.FeatureBackgroundAsync();
 #line hidden
-#line 67
-    await testRunner.WhenAsync(string.Format("selecciona el tipo de pago \'{0}\'", tipo_Pago), ((string)(null)), ((global::Reqnroll.Table)(null)), "When ");
+#line 91
+  await testRunner.WhenAsync(string.Format("el usuario selecciona el tipo de pago \'{0}\'", tipo_Pago), ((string)(null)), ((global::Reqnroll.Table)(null)), "When ");
 #line hidden
-#line 68
-    await testRunner.AndAsync("selecciona el medio de pago \'DEPCU\'", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
+#line 92
+  await testRunner.AndAsync("el usuario selecciona el medio de pago \'DEPCU\'", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
 #line hidden
-#line 69
-    await testRunner.AndAsync(string.Format("ingresa cuenta bancaria correcta \'{0}\'", cuenta_Correcta), ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
+#line 93
+  await testRunner.AndAsync(string.Format("el usuario ingresa cuenta bancaria correcta \'{0}\'", cuenta_Correcta), ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
 #line hidden
-#line 70
-    await testRunner.AndAsync(string.Format("ingresa número de operación \'{0}\'", numero_Operacion), ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
+#line 94
+  await testRunner.AndAsync(string.Format("el usuario ingresa numero de operacion \'{0}\'", numero_Operacion), ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
 #line hidden
-#line 71
-    await testRunner.ThenAsync("la venta se guarda correctamente", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
+#line 95
+  await testRunner.ThenAsync("el usuario guarda la venta correctamente", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
 #line hidden
             }
             await this.ScenarioCleanupAsync();
@@ -376,8 +388,29 @@ await this.FeatureBackgroundAsync();
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("Pago con Crédito Configurado - Condición <condicion>")]
         [NUnit.Framework.CategoryAttribute("CreditoConfigurado")]
-        [NUnit.Framework.TestCaseAttribute("27", "10", "2", "3 de cada mes", null)]
-        public async System.Threading.Tasks.Task PagoConCreditoConfigurado_CondicionCondicion(string condicion, string cuota_Inicial_Menor_Total, string cuotas_Menor_Total, string selecciona_Dia, string[] exampleTags)
+        [NUnit.Framework.TestCaseAttribute("27", "CC", "1.00", "2", "17 de cada mes", null)]
+        [NUnit.Framework.TestCaseAttribute("28", "CC", "0.00", "0", "", null)]
+        [NUnit.Framework.TestCaseAttribute("29", "CC", "8.70", "2", "12 de cada mes", null)]
+        [NUnit.Framework.TestCaseAttribute("30", "CC", "12.00", "0", "", null)]
+        [NUnit.Framework.TestCaseAttribute("31", "CC", "15.25", "3", "7 de cada mes", null)]
+        [NUnit.Framework.TestCaseAttribute("32", "CC", "60.00", "0", "", null)]
+        [NUnit.Framework.TestCaseAttribute("33", "CC", "2.50", "4", "", null)]
+        [NUnit.Framework.TestCaseAttribute("34", "CC", "18.90", "0", "", null)]
+        [NUnit.Framework.TestCaseAttribute("35", "CC", "9.99", "5", "", null)]
+        [NUnit.Framework.TestCaseAttribute("36", "CC", "55.00", "0", "", null)]
+        [NUnit.Framework.TestCaseAttribute("37", "CC", "20.00", "6", "", null)]
+        [NUnit.Framework.TestCaseAttribute("38", "CC", "0.10", "0", "", null)]
+        [NUnit.Framework.TestCaseAttribute("39", "CC", "10.75", "8", "", null)]
+        [NUnit.Framework.TestCaseAttribute("40", "CC", "43.48", "0", "", null)]
+        [NUnit.Framework.TestCaseAttribute("41", "CC", "7.30", "12", "", null)]
+        [NUnit.Framework.TestCaseAttribute("42", "CC", "-5.00", "-1", "5 de cada mes", null)]
+        [NUnit.Framework.TestCaseAttribute("43", "CC", "-10.00", "2", "10 de cada mes", null)]
+        [NUnit.Framework.TestCaseAttribute("44", "CC", "1.00", "3", "4 de cada mes", null)]
+        [NUnit.Framework.TestCaseAttribute("45", "CC", "5.00", "5", "6 de cada mes", null)]
+        [NUnit.Framework.TestCaseAttribute("46", "CC", "1.00", "-4", "5 de cada mes", null)]
+        [NUnit.Framework.TestCaseAttribute("47", "CC", "1.00", "2", "10 de cada mes", null)]
+        [NUnit.Framework.TestCaseAttribute("48", "CC", "1.00", "5", "25 de cada mes", null)]
+        public async System.Threading.Tasks.Task PagoConCreditoConfigurado_CondicionCondicion(string condicion, string tipo_Pago, string cuota_Inicial_Menor_Total, string cuotas_Menor_Total, string selecciona_Dia, string[] exampleTags)
         {
             string[] @__tags = new string[] {
                     "CreditoConfigurado"};
@@ -388,11 +421,12 @@ await this.FeatureBackgroundAsync();
             string[] tagsOfScenario = @__tags;
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             argumentsOfScenario.Add("condicion", condicion);
+            argumentsOfScenario.Add("tipo_pago", tipo_Pago);
             argumentsOfScenario.Add("cuota_inicial_menor_total", cuota_Inicial_Menor_Total);
             argumentsOfScenario.Add("cuotas_menor_total", cuotas_Menor_Total);
             argumentsOfScenario.Add("selecciona_dia", selecciona_Dia);
             global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("Pago con Crédito Configurado - Condición <condicion>", null, tagsOfScenario, argumentsOfScenario, featureTags);
-#line 79
+#line 107
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             if ((global::Reqnroll.TagHelper.ContainsIgnoreTag(scenarioInfo.CombinedTags) || global::Reqnroll.TagHelper.ContainsIgnoreTag(featureTags)))
@@ -405,23 +439,23 @@ this.ScenarioInitialize(scenarioInfo);
 #line 3
 await this.FeatureBackgroundAsync();
 #line hidden
-#line 80
-    await testRunner.WhenAsync("selecciona el tipo de pago \'CC\'", ((string)(null)), ((global::Reqnroll.Table)(null)), "When ");
+#line 108
+  await testRunner.WhenAsync(string.Format("el usuario selecciona el tipo de pago \'{0}\'", tipo_Pago), ((string)(null)), ((global::Reqnroll.Table)(null)), "When ");
 #line hidden
-#line 81
-    await testRunner.AndAsync(string.Format("verifica cuota inicial \'{0}\'", cuota_Inicial_Menor_Total), ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
+#line 109
+  await testRunner.AndAsync(string.Format("el usuario verifica cuota inicial \'{0}\'", cuota_Inicial_Menor_Total), ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
 #line hidden
-#line 82
-    await testRunner.AndAsync(string.Format("verifica cuotas totales \'{0}\'", cuotas_Menor_Total), ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
+#line 110
+  await testRunner.AndAsync(string.Format("el usuario verifica cuotas totales \'{0}\'", cuotas_Menor_Total), ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
 #line hidden
-#line 83
-    await testRunner.AndAsync(string.Format("selecciona día del mes de pago \'{0}\'", selecciona_Dia), ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
+#line 111
+  await testRunner.AndAsync(string.Format("el usuario selecciona dia del mes de pago \'{0}\'", selecciona_Dia), ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
 #line hidden
-#line 84
-    await testRunner.AndAsync("genera cuota", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
+#line 112
+  await testRunner.AndAsync("el usuario genera cuota", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
 #line hidden
-#line 85
-    await testRunner.ThenAsync("la venta se guarda correctamente", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
+#line 113
+  await testRunner.ThenAsync("el usuario guarda la venta correctamente", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
 #line hidden
             }
             await this.ScenarioCleanupAsync();

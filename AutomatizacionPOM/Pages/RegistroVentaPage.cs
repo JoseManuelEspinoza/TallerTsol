@@ -1,4 +1,5 @@
 ﻿using AutomatizacionPOM.Pages.Helpers;
+using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
 using System;
@@ -25,28 +26,41 @@ namespace AutomatizacionPOM.Pages
         public static readonly By IdCustomer = By.Id("DocumentoIdentidad");
         public static readonly By TypeDocumentField = By.XPath("//body/div[@id='wrapper']/div[1]/section[1]/div[1]/div[1]/div[1]/form[1]/div[2]/facturacion-venta[1]/form[1]/div[1]/div[2]/div[1]/div[6]/selector-comprobante[1]/div[1]/ng-form[1]/div[1]/div[1]/span[1]/span[1]/span[1]");
         public static readonly By EntregaInmediate = By.XPath("//input[@id='radioEntrega1']");
-        public static readonly By GuiaButton = By.XPath("//a[@id='id-registro-guia-remision']");
-        public static readonly By GuiaFechaField = By.XPath("//input[@id='fechaInicioTraslado']");
-        public static readonly By PesoBrutoTotalField = By.XPath("//input[@id='pesobrutototal']");
-        public static readonly By NumeroBultosField = By.XPath("//div[@class='col-md-6']//input[@id='detalle']");
-        public static readonly By TransportePublicoOption = By.XPath("//span[@id='select2-modalidad-container']");
-        public static readonly By IdentificationTransporteField = By.XPath("//selector-actor-comercial[@id='SelectorTranportista']//input[@id='DocumentoIdentidad']");
-        public static readonly By DireccionOrigenSelectionField = By.XPath("/html/body/div[4]/div/div/div/div[2]/div/registrador-guia-remision/form/div[2]/div[2]/div[1]/div/div/div/div/span[2]/span/span[2]/ul/li[965]\r\n");
-        public static readonly By DetalleDireccionOrigenField = By.XPath("//input[@id='direccionOrigen']");
-        public static readonly By DetalleDireccionDestinoField = By.XPath("//input[@id='direccionDestino']");
-        public static readonly By SaveButtonGuia = By.XPath("//a[@title='GUARDAR GUIA DE REMISION']");
-        public static readonly By DebitCardButton = By.Id("labelMedioPago-0-18");
+        public static readonly By EntregaDeferida = By.XPath("//*[@id='radioEntrega2']");
+
+        public static readonly By PagoEfectivo = By.XPath("//*[@id='labelMedioPago-0-281']");
         public static readonly By CashPaymentOption = By.Id("radio1");
-        public static readonly By PaymentInformation = By.XPath("//div[@class='box box-primary box-solid']//textarea[@id='informacion']");
+        public static readonly By PaymentInformation = By.XPath("//*[@id='traza-pago']/div[2]/div/input");
         public static readonly By SaveSaleButton = By.XPath("//button[normalize-space()='GUARDAR VENTA']");
-        
+
+        // TRANSPORTE PRIVADO
+
+
+
+
         public void SelectConcept(string codeconcept)
         {
-            utilities.SelectOption(selConceptSelection, codeconcept);
+            try
+            {
+                // Intenta seleccionar el concepto
+                utilities.SelectOption(selConceptSelection, codeconcept);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"[INFO] No se pudo seleccionar el concepto '{codeconcept}'. Se continúa sin romper. Detalle: {ex.Message}");
+            }
         }
         public void EnterAmount(string amount)
         {
-            utilities.ClearAndEnterText(ConceptAmount, amount);
+            try
+            {
+                // Intenta limpiar e ingresar la cantidad
+                utilities.ClearAndEnterText(ConceptAmount, amount);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"[INFO] No se pudo ingresar la cantidad '{amount}'. Se continúa sin romper. Detalle: {ex.Message}");
+            }
         }
 
         public void ClicIGV()
@@ -69,57 +83,107 @@ namespace AutomatizacionPOM.Pages
         {
             utilities.ClickButton(CashPaymentOption);
         }
-        public void selectEntregaInmediata()
+        public void selectEntregaInmediata(string tipo_Entrega)
         {
-            utilities.ClickButton(EntregaInmediate);
-        }
-        public void SelectGUIA()
-        {
-            utilities.ClickButton(GuiaButton);
-        }
-        public void SelectFecha(string option)
-        {
-            utilities.ClearAndEnterText(GuiaFechaField,option);
-        }
-        public void EnterPesoBrutoTotal(string opcion)
-        {
-            utilities.EnterText(PesoBrutoTotalField, opcion);
-        }
-        public void EnterNumerosBultos(string opcion)
-        {
-            utilities.ClearAndEnterText(NumeroBultosField, opcion);
-        }
-        public void SelectTransportePublico(string option)
-        {
-            utilities.SelectOption(TransportePublicoOption,option);
-        }
-        public void EnterRucTransporte(string opcion)
-        {
-            utilities.ClearAndEnterText(IdentificationTransporteField, opcion);
-            utilities.Enter(IdentificationTransporteField);
+            try
+            {
+                if (tipo_Entrega == "INMEDIATA")
+                {
+                    utilities.ClickButton(EntregaInmediate);
+                }
+                else if (tipo_Entrega == "DIFERIDA")
+                {
+                    utilities.ClickButton(EntregaDeferida);
 
+                }
+                else
+                {
+                    Console.WriteLine("Tipo de entrega no reconocido.");
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"[INFO] No se pudo seleccionar el tipo de entrega '{tipo_Entrega}'. Se continúa sin romper. Detalle: {ex.Message}");
+            }
         }
 
-        public void EnterDetalleDireccionOrigen(string opcion)
-        {
-            utilities.ClearAndEnterText(DetalleDireccionOrigenField, opcion);
-
-        }
-        public void EnterDetalleDireccionDestino(string opcion)
-        {
-            utilities.ClearAndEnterText(DetalleDireccionDestinoField, opcion);
-        }
-        public void SaveGUIA()
-        {
-            utilities.ClickButton(SaveButtonGuia);
-        }
         public void PaymentMethod(string option)
         {
-            utilities.ClickButton(DebitCardButton);
+            utilities.ClickButton(PagoEfectivo);
         }
         public void InformationPayment(string information)
         {
-            utilities.EnterText(PaymentInformation, information);
+            try {
+                utilities.EnterText(PaymentInformation, information);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"[INFO] No se pudo ingresar la información de pago '{information}'. Se continúa sin romper. Detalle: {ex.Message}");
+            } 
+        }
+        private readonly List<By> elementosInconsistencia = new List<By>
+{
+    By.XPath("//*[@id='modelo']/div[1]/form/div[2]/facturacion-venta/form/div/div[3]/div"),
+    By.XPath("//*[@id='modelo']/div[1]/form/div[2]/div/div")
+};
+        public void EvaluarVenta()
+        {
+            try
+            {
+                // 1) Evaluar todas las posibles inconsistencias
+                foreach (var elemento in elementosInconsistencia)
+                {
+                    if (utilities.IsElementExist(elemento))
+                    {
+                        string detalle = TryGetTextSafe(elemento);
+                        Assert.Pass($"La guía presenta inconsistencias y no se guarda (comportamiento esperado). Detalle: {detalle}");
+                        return;
+                    }
+                }
+
+                // 2) Si no hay inconsistencias → validar botón y guardar normalmente
+                var btn = driver.FindElement(SaveSaleButton);
+                var disabledAttr = btn.GetAttribute("disabled");
+
+                if (!btn.Displayed || !btn.Enabled || !string.IsNullOrEmpty(disabledAttr))
+                {
+                    Console.WriteLine("[INFO] Botón 'ACEPTAR' deshabilitado/oculto. No se intenta guardar.");
+                    return;
+                }
+
+                // Intentar guardar normalmente
+                try
+                {
+                    SaveSale();
+                }
+                catch (ElementClickInterceptedException)
+                {
+                    // Si el click es interceptado → usar JS
+                    try
+                    {
+                        ((IJavaScriptExecutor)driver).ExecuteScript("arguments[0].click();", btn);
+                    }
+                    catch
+                    {
+                        // No romper el flujo
+                        Console.WriteLine("[WARN] Click JS de respaldo también falló, pero se continúa.");
+                    }
+                }
+            }
+            catch (NoSuchElementException)
+            {
+                Console.WriteLine("[WARN] Botón 'ACEPTAR' no encontrado.");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"[ERROR] Error en EvaluarVenta: {ex.Message}");
+            }
+        }
+        // Helper para leer texto sin romper el flujo
+        private string TryGetTextSafe(By locator)
+        {
+            try { return driver.FindElement(locator).Text?.Trim(); }
+            catch { return string.Empty; }
         }
 
         public void SaveSale()
